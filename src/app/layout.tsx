@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Header } from "@/components/header/Header";
+import { Footer } from "@/components/footer/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,15 +21,50 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  logo,
 }: Readonly<{
   children: React.ReactNode;
+  logo: React.ReactNode;
 }>) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen`}
       >
-        {children}
+        <header>
+          <Header
+            items={[
+              { label: "Products", href: "/rabbit/products" },
+              { label: "Services", href: "/dog/services" },
+              { label: "Testimonials", href: "/fox/testimonials" },
+              { label: "Refund policy", href: "/mouse/refund" },
+              { label: "Career", href: "/lion/career" },
+            ]}
+          >
+            {logo}
+          </Header>
+        </header>
+        <main>{children}</main>
+        <footer
+          style={{
+            position: "absolute",
+            bottom: "0px",
+            left: "0px",
+            right: "0px",
+          }}
+        >
+          <Footer
+            items={[
+              { label: "Products", href: "/rabbit/products" },
+              { label: "Services", href: "/dog/services" },
+              { label: "Testimonials", href: "/fox/testimonials" },
+              { label: "Refund policy", href: "/mouse/refund" },
+              { label: "Career", href: "/lion/career" },
+            ]}
+          >
+            {logo}
+          </Footer>
+        </footer>
       </body>
     </html>
   );
