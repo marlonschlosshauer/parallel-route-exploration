@@ -13,11 +13,7 @@ export const generateStaticParams = () => {
 export default async function LogoPage({ params }: PageProps<"/[[...slug]]">) {
   const { slug } = await params;
 
-  if (!slug) {
-    return null;
-  }
-
-  const [company] = slug;
+  const [company] = slug ?? [];
 
   let text = "🦔";
 

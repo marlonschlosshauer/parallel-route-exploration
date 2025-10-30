@@ -1,3 +1,3 @@
 export default function LogoParallelPage() {
-  return <p>🐰</p>;
+  return null;
 }
